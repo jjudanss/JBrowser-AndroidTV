@@ -1,0 +1,12 @@
+JBrowser 1.5.0 build notes
+
+- Application ID: com.jbrowser.tv
+- Version: 1.5.0 (versionCode 6)
+- Minimum Android: 6.0 / API 23
+- Compile SDK: 36
+- Java: 17
+- GitHub Actions workflow: .github/workflows/build-apk.yml
+- Expected APK: app/build/outputs/apk/debug/app-debug.apk
+- Friendly APK name: JBrowser-1.5.0-Android-TV.apk
+
+The default workflow creates a debug-signed test build. Configure a persistent release keystore before public distribution or seamless upgrades.

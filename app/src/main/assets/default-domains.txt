@@ -1,0 +1,25 @@
+! JBrowser starter protection domains. Updated on first launch from upstream sources.
+! This compact seed blocks well-known ad delivery and analytics hosts while offline.
+0.0.0.0 doubleclick.net
+0.0.0.0 googlesyndication.com
+0.0.0.0 googleadservices.com
+0.0.0.0 pagead2.googlesyndication.com
+0.0.0.0 adservice.google.com
+0.0.0.0 adservice.google.co.uk
+0.0.0.0 ads.yahoo.com
+0.0.0.0 ads.pubmatic.com
+0.0.0.0 ads.rubiconproject.com
+0.0.0.0 adnxs.com
+0.0.0.0 criteo.com
+0.0.0.0 scorecardresearch.com
+0.0.0.0 omtrdc.net
+0.0.0.0 quantserve.com
+0.0.0.0 taboola.com
+0.0.0.0 outbrain.com
+0.0.0.0 pixel.facebook.com
+0.0.0.0 connect.facebook.net
+0.0.0.0 analytics.google.com
+0.0.0.0 www.google-analytics.com
+0.0.0.0 stats.g.doubleclick.net
+0.0.0.0 hotjar.com
+0.0.0.0 segment.io

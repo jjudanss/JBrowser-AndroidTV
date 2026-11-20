@@ -1,0 +1,34 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.jbrowser.tv'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'com.jbrowser.tv'
+        minSdk 23
+        targetSdk 36
+        versionCode 6
+        versionName '1.5.0'
+
+        // The browser is designed for Android TV first, while remaining installable
+        // on Android devices that provide the Android System WebView package.
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildTypes {
+        // GitHub Actions builds a debug-signed APK for simple sideload installation.
+        // Keep the same application ID so the launcher identity remains JBrowser.
+        release {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
