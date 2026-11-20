@@ -3,8 +3,11 @@ name: Build JBrowser Android TV APK
 
 on:
   push:
-    branches: [main, master]
-    tags: ['v*']
+    branches:
+      - main
+      - master
+    tags:
+      - 'v*'
   workflow_dispatch:
 
 permissions:
@@ -16,22 +19,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download source code
+      - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Install Java 17
+      - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
 
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools'
 
       - name: Install Android SDK 36
-        run: sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+        run: |
+          sdkmanager --install \
+            "platforms;android-36" \
+            "build-tools;36.0.0"
 
-      - name: Install Gradle 8.13
+      - name: Set up Gradle 8.13
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.13'
@@ -42,9 +50,10 @@ jobs:
       - name: Prepare APK
         run: |
           mkdir -p dist
-          cp app/build/outputs/apk/debug/app-debug.apk dist/JBrowser-1.5.0-Android-TV.apk
+          cp app/build/outputs/apk/debug/app-debug.apk \
+            dist/JBrowser-1.5.0-Android-TV.apk
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: JBrowser-1.5.0-Android-TV
@@ -58,9 +67,9 @@ jobs:
         with:
           name: JBrowser 1.5.0 for Android TV
           body: |
-            JBrowser 1.5.0 Android TV APK.
+            JBrowser 1.5.0 for Android TV.
 
-            Download the APK below to install JBrowser on your Android TV.
+            Download the APK below and install it on your Android TV.
             This is a debug-signed test build.
           files: dist/JBrowser-1.5.0-Android-TV.apk
           prerelease: true
